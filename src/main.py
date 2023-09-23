@@ -1,22 +1,35 @@
 # this is needed for supporting Windows 10 with OpenGL < v2.0
 # Example: VirtualBox w/ OpenGL v1.1
-import platform, os
+import os
+import platform
+
 if platform.system() == 'Windows':
     os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 
 import kivy
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.label import Label
+
 #kivy.require('1.0.6') # replace with your current kivy version !
 
-from kivy.app import App
-from kivy.uix.label import Label
+
+KV = '''
+Screen:
+    Label:
+        text: 'Hello world!'
+    Image:
+        source: 'assets/cat.jpg'
+        size: self.texture_size
+        size_hint: 0.5, 0.5
+
+'''
 
 class MyApp(App):
 
     def build(self):
-        return Label(text='Hello world!')
+        return Builder.load_string(KV)
 
 
 if __name__ == '__main__':
     MyApp().run()
-
-
