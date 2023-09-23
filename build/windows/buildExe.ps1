@@ -78,7 +78,7 @@ from kivy_deps import angle, glew, sdl2
 block_cipher = None
 
 
-a = Analysis(['..\\src\\main.py'],
+a = Analysis(['..\\cryptowallet\\main.py'],
              pathex=['.\\'],
              binaries=[],
              datas=[],
@@ -102,7 +102,7 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           console=True )
-coll = COLLECT(exe, Tree('..\\src\\'),
+coll = COLLECT(exe, Tree('..\\cryptowallet\\'),
                a.binaries,
                a.zipfiles,
                a.datas,

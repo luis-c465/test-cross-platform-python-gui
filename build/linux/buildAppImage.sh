@@ -62,7 +62,7 @@ mv squashfs-root /tmp/kivy_appdir
 /tmp/kivy_appdir/AppRun -m pip install -r requirements.txt
 
 # add our code to the AppDir
-rsync -a src /tmp/kivy_appdir/opt/
+rsync -a cryptowallet /tmp/kivy_appdir/opt/
 
 # change AppRun so it executes our app
 mv /tmp/kivy_appdir/AppRun /tmp/kivy_appdir/AppRun.orig
@@ -86,14 +86,14 @@ do
     if [[ "${opt}" =~ "I" ]] || [[ "${opt}" =~ "E" ]]; then
         # Environment variables are disabled ($PYTHONHOME). Let's run in a safe
         # mode from the raw Python binary inside the AppImage
-        "$APPDIR/opt/python3.7/bin/python3.7 $APPDIR/opt/src/main.py" "$@"
+        "$APPDIR/opt/python3.7/bin/python3.7 $APPDIR/opt/cryptowallet/main.py" "$@"
         exit "$?"
     fi
 done
 
 # Get the executable name, i.e. the AppImage or the python binary if running from an
 # extracted image
-executable="${APPDIR}/opt/python3.7/bin/python3.7 ${APPDIR}/opt/src/main.py"
+executable="${APPDIR}/opt/python3.7/bin/python3.7 ${APPDIR}/opt/cryptowallet/main.py"
 if [[ "${ARGV0}" =~ "/" ]]; then
     executable="$(cd $(dirname ${ARGV0}) && pwd)/$(basename ${ARGV0})"
 elif [[ "${ARGV0}" != "" ]]; then
@@ -103,7 +103,7 @@ fi
 # Wrap the call to Python in order to mimic a call from the source
 # executable ($ARGV0), but potentially located outside of the Python
 # install ($PYTHONHOME)
-(PYTHONHOME="${APPDIR}/opt/python3.7" exec -a "${executable}" "$APPDIR/opt/python3.7/bin/python3.7" "$APPDIR/opt/src/main.py" "$@")
+(PYTHONHOME="${APPDIR}/opt/python3.7" exec -a "${executable}" "$APPDIR/opt/python3.7/bin/python3.7" "$APPDIR/opt/cryptowallet/main.py" "$@")
 exit "$?"
 EOF
 

@@ -12,7 +12,7 @@ This project uses [kivy](https://kivy.org/), which also supports android and iOS
 
 1. Fork this repo
 1. On your forked repo, go to the "Actions" tab and click "I understand my workflows, go ahead and enable them" to enable GitHub workflows
-1. Edit [src/main.py](/src/main.py) as needed
+1. Edit [cryptowallet/main.py](/cryptowallet/main.py) as needed
 1. Add any required python modules to [requirements.txt](/requirements.txt)
 
 When you push git commits to github on master, github will automatically spin up containers in the cloud and build your application's executables for all target platforms.

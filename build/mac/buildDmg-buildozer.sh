@@ -104,15 +104,15 @@ if [[ $(which platypus > /dev/null; echo $?) != "0" ]]; then
     wget https://www.sveinbjorn.org/files/software/platypus/platypus5.2.zip
     unzip platypus5.2.zip
     rm platypus5.2.zip
-    
+
     sudo cp Platypus-5.2/Platypus.app/Contents/Resources/platypus_clt /usr/local/bin/
     sudo mv /usr/local/bin/platypus_clt /usr/local/bin/platypus
-    
+
     sudo mkdir -p /usr/local/share/platypus
     sudo cp Platypus-5.2/Platypus.app/Contents/Resources/ScriptExec /usr/local/share/platypus
     sudo chmod +x /usr/local/share/platypus/ScriptExec
     sudo cp -R Platypus-5.2/Platypus.app/Contents/Resources/MainMenu.nib /usr/local/share/platypus
-    
+
     rm -Rf Platypus-5.2
     popd
 else
@@ -122,17 +122,17 @@ fi
 ## Install GStreamer
 if [[ ! -d /Library/Frameworks/GStreamer.framework ]]; then
     pushd ~/Downloads
-    
+
     # You need both, gstreamer runtime binaries and libs and the development package including the headers.
-    
+
     wget https://gstreamer.freedesktop.org/data/pkg/osx/1.14.0/gstreamer-1.0-devel-1.14.0-x86_64.pkg
     sudo /usr/sbin/installer -pkg gstreamer-1.0-devel-1.14.0-x86_64.pkg -target /
     rm gstreamer-1.0-devel-1.14.0-x86_64.pkg
-    
+
     wget https://gstreamer.freedesktop.org/data/pkg/osx/1.14.0/gstreamer-1.0-1.14.0-x86_64.pkg
     sudo /usr/sbin/installer -pkg gstreamer-1.0-1.14.0-x86_64.pkg -target /
     rm gstreamer-1.0-1.14.0-x86_64.pkg
-    
+
     popd
 else
     echo "GStreamer is already installed..."
@@ -202,7 +202,7 @@ cat > buildozer.spec << EOF
 title = Hello World
 package.name = ${APP_NAME}
 package.domain = org.test
-source.dir = ../src/
+source.dir = ../cryptowallet/
 source.include_exts = py,png,jpg,kv,atlas
 version = 0.1
 requirements = kivy
@@ -294,7 +294,7 @@ pushd .buildozer/osx/platform/kivy-sdk-packager-master/osx
 
 # TODO: remove this after you fix the python binary issues
 ls -lah Kivy.app/Contents/Resources/
-ls -lah Kivy.app/Contents/Resources/python 
+ls -lah Kivy.app/Contents/Resources/python
 ls -lah Kivy.app/Contents/Resources/venv/bin/
 ls -lah Kivy.app/Contents/Resources/venv/bin/python
 ls -lah Kivy.app/Contents/Frameworks/python/3.7.3/bin/

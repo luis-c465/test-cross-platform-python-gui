@@ -94,7 +94,7 @@ cat >> ${APP_NAME}.spec <<EOF
 block_cipher = None
 
 
-a = Analysis(['../src/main.py'],
+a = Analysis(['../cryptowallet/main.py'],
              pathex=['./'],
              binaries=[],
              datas=[],
@@ -118,7 +118,7 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           console=False )
-coll = COLLECT(exe, Tree('../src/'),
+coll = COLLECT(exe, Tree('../cryptowallet/'),
                a.binaries,
                a.zipfiles,
                a.datas,
@@ -135,7 +135,7 @@ EOF
 ${PYTHON_PATH} -m PyInstaller -y --clean --windowed "${APP_NAME}.spec"
 
 pushd dist
-hdiutil create ./${APP_NAME}.dmg -srcfolder ${APP_NAME}.app -ov
+hdiutil create ./${APP_NAME}.dmg -cryptowalletfolder ${APP_NAME}.app -ov
 popd
 
 #####################
