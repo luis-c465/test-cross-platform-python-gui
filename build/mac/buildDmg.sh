@@ -135,7 +135,7 @@ EOF
 ${PYTHON_PATH} -m PyInstaller -y --clean --windowed "${APP_NAME}.spec"
 
 pushd dist
-hdiutil create ./${APP_NAME}.dmg -cryptowalletfolder ${APP_NAME}.app -ov
+hdiutil create ./${APP_NAME}.dmg -srcfolder ${APP_NAME}.app -ov
 popd
 
 #####################
