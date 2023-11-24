@@ -3,18 +3,18 @@
 import os
 import platform
 
-if platform.system() == 'Windows':
-    os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
+if platform.system() == "Windows":
+    os.environ["KIVY_GL_BACKEND"] = "angle_sdl2"
 
 import kivy
-from kivy.app import App
+from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.label import Label
 
-#kivy.require('1.0.6') # replace with your current kivy version !
+# kivy.require('1.0.6') # replace with your current kivy version !
 
 
-KV = '''
+KV = """
 Screen:
     Label:
         text: 'Hello world!'
@@ -23,13 +23,16 @@ Screen:
         size: self.texture_size
         size_hint: 0.5, 0.5
 
-'''
+    MDIconButton:
+        icon: "language-python"
 
-class MyApp(App):
+"""
 
+
+class MyApp(MDApp):
     def build(self):
         return Builder.load_string(KV)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     MyApp().run()
