@@ -92,6 +92,7 @@ cat >> ${APP_NAME}.spec <<EOF
 # -*- mode: python ; coding: utf-8 -*-
 
 block_cipher = None
+from kivymd import hooks_path as kivymd_hooks_path
 
 
 a = Analysis(['../cryptowallet/main.py'],
@@ -99,7 +100,7 @@ a = Analysis(['../cryptowallet/main.py'],
              binaries=[],
              datas=[],
              hiddenimports=['pkg_resources.py2_warn', 'kivymd'],
-             hookspath=[],
+             hookspath=[kivymd_hooks_path],
              runtime_hooks=[],
              excludes=['_tkinter', 'Tkinter', 'enchant', 'twisted'],
              win_no_prefer_redirects=False,
