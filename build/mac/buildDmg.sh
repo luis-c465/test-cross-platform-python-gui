@@ -145,6 +145,7 @@ popd
 # create the dist dir for our result to be uploaded as an artifact
 mkdir -p ../dist
 cp "dist/${APP_NAME}.dmg" ../dist/
+cp -r "dist" ../dist/
 
 #######################
 # OUTPUT VERSION INFO #
