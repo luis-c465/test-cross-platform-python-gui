@@ -71,6 +71,11 @@ PIP_PATH="`find /usr/local/Cellar/python -type f -wholename *bin/pip3* | sort -n
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/setuptools-49.1.0-py3-none-any.whl
 ${PIP_PATH} install --ignore-installed --upgrade --cache-dir build/deps/ --no-index --find-links file://`pwd`/build/deps/ build/deps/wheel-0.34.2-py2.py3-none-any.whl
 
+# install kivy and all other python dependencies with pip into our virtual env
+#source /tmp/kivy_venv/bin/activate
+${PIP_PATH} install -r requirements.txt
+
+
 # setup a virtualenv to isolate our app's python depends
 #sudo ${PYTHON_PATH} -m ensurepip
 #${PIP_PATH} install --upgrade --force-reinstall --user pip setuptools
